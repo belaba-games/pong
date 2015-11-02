@@ -1,7 +1,7 @@
   // TODO
-  //     -AI/Right racket
+  //     -AI
   //     -Buttons
-  //     -Score/racket detection
+  //     -Score
 
   var canvas = document.querySelector("canvas")
   var ctx = canvas.getContext("2d");
@@ -141,3 +141,5 @@
     
 
   }
+
+  /*Copyright 2015 Benedek Tomasik*/

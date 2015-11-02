@@ -1,0 +1,53 @@
+/*Roboto font include-olása*/
+@import url(https://fonts.googleapis.com/css?family=Roboto&subset=latin,latin-ext);
+
+*
+{
+  margin: 0px;
+  padding: 0px;
+  font-family: 'Roboto', sans-serif;
+  background-color: #ef5350;
+  color: #ffffff;
+}
+
+body
+{
+  background-color: #ef5350;
+  text-align: center;
+}
+canvas
+{
+  border: 5px solid white;
+}
+
+#back
+{
+  display: block;
+  float: left;
+  font-size: 3em;
+  margin: 1.5%;
+}
+
+p:hover
+{
+  background-color: #ffffff;
+  color: #ef5350;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a:active {
+    text-decoration: underline;
+}
+
+/*Copyright 2015 Benedek Tomasik*/
