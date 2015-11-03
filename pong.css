@@ -25,7 +25,8 @@ canvas
   display: block;
   float: left;
   font-size: 3em;
-  margin: 1.5%;
+  margin: 2%;
+  cursor: pointer;
 }
 
 p:hover
@@ -34,19 +35,23 @@ p:hover
   color: #ef5350;
 }
 
-a:link {
+a:link
+{
     text-decoration: none;
 }
 
-a:visited {
+a:visited
+{
     text-decoration: none;
 }
 
-a:hover {
+a:hover
+{
     text-decoration: underline;
 }
 
-a:active {
+a:active
+{
     text-decoration: underline;
 }
 

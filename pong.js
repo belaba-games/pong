@@ -1,12 +1,3 @@
-  // TODO
-  //     -AI
-  //     -Buttons
-  //     -Score
-
-
-
-
-
 //lenyomott bill mentése
 var keyState = {};
 document.addEventListener("keydown", function(event) {
@@ -53,6 +44,7 @@ var ctx = canvas.getContext("2d");
   var rightRacket = new RacketConst(new VectorConst(canvas.width - 32, 200), 12, 80);
   var leftPoint = 0;
   var rightPoint = 0;
+  var aiClicked = false;
 
 
 
@@ -62,6 +54,13 @@ canvas.width = 900;
 canvas.height = 500;
 
 var reset = document.getElementById("reset");
+var aiButton = document.getElementById("ai");
+
+aiButton.addEventListener("click", function() {
+  aiClicked = !aiClicked;
+  aiButton.style.backgroundColor = "#ffffff";
+  aiButton.style.color = "#ef5350";
+});
 
 
 reset.addEventListener("click",function() {
@@ -82,6 +81,18 @@ function resetBall() {
   rightRacket.y = 200;  
 };
 
+function ai() {
+  if (ball.y > rightRacket.y + rightRacket.height - ball.r) {
+    rightRacket.y += 4;
+  }
+  else if (ball.y < rightRacket.y + ball.r)
+    rightRacket.y -= 4;
+};
+
+if (aiClicked) {
+  ai();
+}
+
 //animáció
   var lastTime = null;
   function frame(time) {
@@ -100,6 +111,9 @@ function resetBall() {
     ctx.beginPath();
     ctx.fillStyle = "#ef5350";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    console.log(aiClicked);
+    if (aiClicked) { ai(); }
 
     //38: fel nyil | 40: le nyil
     if (keyState[87] && leftRacket.y > 0) {
@@ -126,7 +140,7 @@ function resetBall() {
       else if (ball.y >= (leftRacket.y + leftRacket.height * (1/3)) && ball.y < (leftRacket.y + leftRacket.height * (2/3)) ) {
         speed.x *= -1;
       }
-      else if (ball.y >= (leftRacket.y + leftRacket.height * (2/3)) && ball.y < (leftRacket.y + leftRacket.height) ) {
+      else if (ball.y >= (leftRacket.y + leftRacket.height * (2/3)) && ball.y < (leftRacket.y + leftRacket.height) + ball.r) {
         speed.x *= -1;
         speed.y += 3;
       }
@@ -175,6 +189,10 @@ function resetBall() {
     ctx.fillStyle = "white";
     ctx.arc(ball.x, ball.y, ball.r, 0, 7);
     ctx.fill();
+
+    //közép vonal
+    ctx.fillRect(448, 0, 4, 500);
+
 
     //racket animáció
     ctx.fillRect(leftRacket.x, leftRacket.y, leftRacket.width, leftRacket.height);
